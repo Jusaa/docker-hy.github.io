@@ -1,9 +1,13 @@
 version: 2.1
 orbs:
-  docker: circleci/docker@1.0.0
+  heroku: circleci/heroku@1.2.3
 workflows:
   deploy:
     jobs:
-      - docker/publish:
-          image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
-          tag: 'latest'
+      - build
+      - heroku/deploy-via-git:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
