@@ -9,4 +9,4 @@ workflows:
           deploy: false
           image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           tag: 'latest'
-      - heroku/push-docker-image:
+      - heroku/push-docker-image
