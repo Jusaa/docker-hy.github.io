@@ -9,7 +9,10 @@ workflows:
          image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
          tag: 'latest'
 
-steps:
+jobs:
+  deploy:
+  machine: true
+  steps:
   - checkout
   - run:
       name: Build and push Docker image to Heroku
