@@ -10,5 +10,7 @@ workflows:
           image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           tag: 'latest'
       - heroku/push-docker-image:
+          pre-steps:
+            - run: heroku container:login
           requires:
             - docker/publish
